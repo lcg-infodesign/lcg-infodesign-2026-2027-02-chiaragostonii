@@ -37,33 +37,31 @@ function draw() {
 function mioGlifo(x, y, size){
   push();
 
-
-
   translate(x, y);
-    rectMode(CENTER);
+  rectMode(CENTER);
 
   
 let randomColor = random(1, 100);
 
-    if (randomColor<20){
-      fill(101, 11, 46);
-    } else if(randomColor<70){
-      fill(243, 231, 216); 
-    }else{
-      fill(163, 28, 44);
-    }
+//ciclo per scegliere il colore random tra tre colori della base del sushi
+  if (randomColor<20){
+    fill(101, 11, 46);
+  } else if(randomColor<70){
+    fill(243, 231, 216); 
+  }else{
+    fill(163, 28, 44);
+  }
 
-
+  //quadrato di base del sushi
   rect(0, 0, size, size, 20);
+  //quadrato interno, alga del sushi
   fill(0);
-    rect(0, 0, size/2, size/2, 5);
+  rect(0, 0, size/2, size/2, 5);
 
 
-let quanteForme = ceil(random(2, 4));
+let quanteForme = ceil(random(2, 4)); //numero di forme random del ripieno del sushi
 
 for(let i=0; i < quanteForme; i++){
-  // let xForma = random(-size*0.25, size*0.25);
-  // let yForma = random(-size*0.25, size*0.25);
 
   miaForma(i+1, size);
 } 
@@ -72,10 +70,11 @@ for(let i=0; i < quanteForme; i++){
 }
 
 function miaForma(posizione, size) {
-  let sizeCerchio = random((size/4)*0.7, size/4); 
-  let sizeQuadrato = random((size/4)*0.7, size/4); 
-  let qualeForma = ceil(random (3));
-  //coordinate posizione
+  let sizeCerchio = random((size/4)*0.7, size/4); //dimensioni dei cerchi del ripieno del sushi
+  let sizeQuadrato = random((size/4)*0.7, size/4); //dimensioni dei quadrati dei ripieni del sushi
+  let qualeForma = ceil(random (3)); //scelta casuale della forma da usare nel ripieno del sushi
+  
+  //coordinate posizione di ogni elemento del ripieno del sushi
   let x1 = -size/8;
   let y1 = -size/8;
   let x2 = size /8;
@@ -89,7 +88,7 @@ function miaForma(posizione, size) {
   let y = 0;
 
 
-
+//posizioni dei vari elementi casuali del ripieno del sushi
   if(posizione == 1){
     x = x1;
     y = y1;
@@ -105,25 +104,45 @@ function miaForma(posizione, size) {
   }
 
 
+//colore condimento interno sushi
+let coloreSushi = ceil(random(10));
+  if(coloreSushi==1){
+    fill(188,207,150);
+  }else if(coloreSushi==2){
+    fill(152,192,63);
+  }else if(coloreSushi==3){
+    fill(100,169,57);
+  }else if(coloreSushi==4){
+    fill(241,229,83);
+  }else if(coloreSushi==5){
+    fill(230,204,118);
+  }else if(coloreSushi==6){
+    fill(209,51,32);
+  }else if(coloreSushi==7){
+    fill(245,133,88);
+  }else if(coloreSushi==8){
+    fill(245,135,112);
+  }else if(coloreSushi==9){
+    fill(234,188,174);
+  }else {
+    fill(169,11,74);
+  }
 
 
-
-
-  
+//ciclo per la scelta casuale della forma del condimento interno sushi
   if(qualeForma == 1) {
-    fill(255,0,0);
     circle(x, y, sizeCerchio);  
 } else if (qualeForma == 2) {
-    fill(0,255,0);
-    rect(x, y, sizeQuadrato);
+    rect(x, y, sizeQuadrato, sizeQuadrato, 5);
 } else if(qualeForma == 3){
-  push();
-    rotate(random(12));  
-    fill(0,0,255);
-    rect(x, y, sizeQuadrato);
-  pop();
+    push(); //il push e il pop servono per isolare la rotazione solo quando il ciclo cade in questo caso
+    
+    rotate(random(12));  //rotazione solo di questi quadrati
+    rect(x, y, sizeQuadrato, sizeQuadrato, 5);
+    
+    pop();
   } else{
-
+//non metto niente per lasciare comunque la modularità dentro il ripieno del sushi nel caso in cui in un ripieno vengano solo 3 forme
   }
 }
 
