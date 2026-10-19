@@ -53,7 +53,7 @@ let randomColor = random(1, 100);
   }
   push();
   stroke(0);
-  strokeWeight(2);
+  strokeWeight(1.5);
   //quadrato di base del sushi
     rect(0, 0, size, size, 20);
   pop();
