@@ -51,10 +51,13 @@ let randomColor = random(1, 100);
   }else{
     fill(163, 28, 44);
   }
-
+  push();
+  stroke(0);
+  strokeWeight(2);
   //quadrato di base del sushi
-  rect(0, 0, size, size, 20);
-  //quadrato interno, alga del sushi
+    rect(0, 0, size, size, 20);
+  pop();
+    //quadrato interno, alga del sushi
   fill(0);
   rect(0, 0, size/2, size/2, 5);
 
